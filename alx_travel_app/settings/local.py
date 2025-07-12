@@ -62,6 +62,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email settings (for development)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'development@alxtravel.com'
 
 # Chapa Payment Settings
 CHAPA_SECRET_KEY = env('CHAPA_SECRET_KEY', default='')

@@ -77,9 +77,13 @@ class BookingViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         """
-        Automatically set the user to the current user
+        Automatically set the user to the current user and trigger confirmation email
         """
-        serializer.save(user=self.request.user)
+        booking = serializer.save(user=self.request.user)
+        
+        # Trigger email task asynchronously
+        from ..tasks import send_booking_confirmation_email
+        send_booking_confirmation_email.delay(str(booking.id))
 
     def perform_update(self, serializer):
         """
