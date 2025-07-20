@@ -1,16 +1,12 @@
-"""
-WSGI config for alx_travel_app project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.2/howto/deployment/wsgi/
-"""
-
+# wsgi.py
 import os
+import sys
+
+path = '/home/Banta/alx_travel_app'  # Update with your PythonAnywhere username
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'alx_travel_app.settings.production'
 
 from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'alx_travel_app.settings')
-
 application = get_wsgi_application()
