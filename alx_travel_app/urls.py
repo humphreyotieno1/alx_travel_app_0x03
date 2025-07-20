@@ -21,4 +21,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include('alx_travel_app.listings.urls')),  # Include listings URLs at the root
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include('alx_travel_app.listings.urls')),  # Your app's URLs
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
